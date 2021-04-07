@@ -94,6 +94,9 @@ html{
 .flex-15{
     flex: 0 1 15%;
 }
+.flex-20{
+    flex: 0 1 20%;
+}
 .flex-25{
     flex: 0 1 25%;
 }
@@ -215,6 +218,10 @@ a{
     border-radius: 5px;
     vertical-align: middle;
 }
+
+#toggle, .toggle-label{
+    display: none;
+}
 /* hero  */
 .hero{
     background: linear-gradient(rgba(53,41,183,0.9),rgba(53,41,183,0.5))
@@ -324,22 +331,20 @@ a{
 }
 
 /* poster  */
-.poster{
-    background: url(../media/banner.png) no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    border-radius: 10px;
+.iframe-container{
+    height: 0;
+    padding-bottom: 56.25%;
+    width: 100%;
+    position: relative;
 }
-.poster .circle{
-    width: 7rem;
-    height: 7rem;
-    background: white;
-    border: none;
-}
-.poster .circle .icon{
-    color: var(--primary);
-    font-size: 2.5rem;
-    padding-left:.3rem;
+.event-cover iframe{
+    border-radius: 12px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
 }
 /* news  */
 .each-news{
@@ -369,7 +374,10 @@ a{
 /* footer  */
 .footer-navbar{
     background: rgb(35,52,123);
-    padding: 3rem 22rem 3rem 6rem ;
+    
+}
+.footer-navbar-content{
+    padding: 3rem 18rem 3rem 3rem;
 }
 .footer-navbar .h5-heading{
     color: white;
@@ -379,9 +387,7 @@ a{
 .quick-links .flex, .follow-us .flex{
     margin-top: 1.5rem;
 }
-.quick-links{
-    margin-left: 10rem;
-}
+
 .footer-nav-items{
     margin-right: 1rem;
 }
@@ -405,17 +411,18 @@ a{
     font-size: 1.1rem;
 }
 
-#toggle{
-    display: none;
-}
-.toggle-label{
-    display: none;
-}
+
+
+
+
 
 @media screen and (max-width:768px){
     
     html{
-        font-size: 12px;
+        font-size:12px;
+    }
+    .container{
+        max-width: 720px;
     }
     /* flex  */
     .wrap{
@@ -434,6 +441,13 @@ a{
     .order-1{
         order:1;
     }
+    .sm-full-width{
+       width: 100%; 
+    }
+    .navbar{
+        background: rgba(0,0,0,0.4);
+        height: 7rem;
+    }
     .nav{
         display: none;
     }
@@ -443,8 +457,8 @@ a{
         color: white;
         position: fixed;
         z-index: 2;
-        right: 25px;
-        top: 16px;
+        right: 1.5rem;
+        top: 1rem;
     }
     #toggle:checked~ .nav{
         display: inline-block;
@@ -454,7 +468,7 @@ a{
     }
     .nav{
         display: none;
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         left: 0;
@@ -463,7 +477,6 @@ a{
         width: 100%;
         background: rgba(53,37,173,0.9);
         z-index: 1;
-        padding-top: 120px;
         text-align: center;
     }
     .nav-item{
@@ -478,12 +491,15 @@ a{
         color: white;
         position: fixed;
         z-index: 2;
-        left: 25px;
-        top: 16px;
+        left: 1.5rem;
+        top: 1rem;
     }
     /* hero  */
+
     .hero img{
-        border-radius: 45px;
+        height:40rem;
+        object-fit: cover;
+        padding-top: 4rem;
     }
     /* about */
     .about .h2-heading, .services .h2-heading{
@@ -494,25 +510,45 @@ a{
         margin-top: 0;
     }
     /* shedules  */
-    .each-schedule{
-        text-align: -webkit-center;
-        margin-top: 0;
+    .line{
+        display: none;
     }
-    .each-schedule .flex-100{
-        margin: 0;
+     .each-schedule{
+        text-align: -webkit-center;
+        box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+        margin-top: 3rem;
+        padding: 2rem;
     }
     .circle{
-        margin-top: 20px;
+        border: none;
+        margin: 0;
+        width: 0rem;
+        height: 0rem;
+        border:none;
+        padding: 2rem;
     }
-    .line{
-        width: 1px;
+    .each-schedule .red-bg{
+        background: none;
+    }
+    .each-schedule .white-font{
+        color: var(--primary);
+    }
+    .each-schedule .flex-100{
+        margin-bottom:0;
+    }
+    /* news  */
+    .each-news img{
+        height:20rem;
+        object-fit: cover;
     }
     /* footer  */
     .footer-navbar{
         text-align: center;
         padding: 0;
     }
-
+    .footer-navbar-content{
+        padding: 2rem 0;
+    }
     .quick-links{
         margin: 15px 0;
     }
@@ -524,4 +560,32 @@ a{
         font-size: 16px;
     }
    
+}
+
+
+
+
+@media screen and (max-width:1200px){
+    .container{
+        max-width: 1140px;
+    }
+}
+
+@media screen and (max-width:992px){
+    .container{
+        max-width: 960px;
+    }
+    html{
+       font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width:576px){
+    .container{
+        max-width: 540px;
+    }
+    html{
+        font-size: 10px;
+     }
 }
